@@ -1,6 +1,6 @@
 # Well-formed JSON.stringify
 
-A proposal to prevent `JSON.stringify` from returning strings that cannot be represented in UTF-8.
+A proposal to prevent `JSON.stringify` from returning ill-formed Unicode strings.
 
 ## Status
 This proposal is at stage 0 of [the TC39 Process](https://tc39.github.io/process-document/).
