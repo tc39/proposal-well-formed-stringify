@@ -1,0 +1,82 @@
+<!doctype html>
+<meta charset="utf8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<pre class="metadata">
+title: Well-formed JSON.stringify
+status: proposal
+stage: 0
+shortname: &lt;a href="https://gibson042.github.io/ecma262-proposal-well-formed-stringify"&gt;proposal-well-formed-stringify&lt;/a&gt;
+contributors: Richard Gibson
+</pre>
+<emu-biblio href="./missing-productions.json"></emu-biblio>
+
+
+<!-- es6num="24.3.2.2" -->
+<emu-clause id="sec-quotejsonstring" aoid="QuoteJSONString">
+  <h1>Runtime Semantics: QuoteJSONString ( _value_ )</h1>
+  <p>The abstract operation QuoteJSONString with argument _value_ wraps a String value in QUOTATION MARK code units and escapes certain other code units within it.</p>
+  <emu-alg>
+    1. Let _product_ be the String value consisting solely of the code unit 0x0022 (QUOTATION MARK).
+    1. For each code unit _C_ in _value_, do
+      1. If _C_ is the code unit 0x0022 (QUOTATION MARK) or the code unit 0x005C (REVERSE SOLIDUS), then
+        1. Set _product_ to the string-concatenation of _product_ and the code unit 0x005C (REVERSE SOLIDUS).
+        1. Set _product_ to the string-concatenation of _product_ and _C_.
+      1. Else if _C_ is the code unit 0x0008 (BACKSPACE), the code unit 0x000C (FORM FEED), the code unit 0x000A (LINE FEED), the code unit 0x000D (CARRIAGE RETURN), or the code unit 0x0009 (CHARACTER TABULATION), then
+        1. Set _product_ to the string-concatenation of _product_ and the code unit 0x005C (REVERSE SOLIDUS).
+        1. Let _abbrev_ be the String value corresponding to the value of _C_ as follows:
+          <table class="lightweight">
+            <tbody>
+            <tr>
+              <td>
+                BACKSPACE
+              </td>
+              <td>
+                `"b"`
+              </td>
+            </tr>
+            <tr>
+              <td>
+                FORM FEED (FF)
+              </td>
+              <td>
+                `"f"`
+              </td>
+            </tr>
+            <tr>
+              <td>
+                LINE FEED (LF)
+              </td>
+              <td>
+                `"n"`
+              </td>
+            </tr>
+            <tr>
+              <td>
+                CARRIAGE RETURN (CR)
+              </td>
+              <td>
+                `"r"`
+              </td>
+            </tr>
+            <tr>
+              <td>
+                CHARACTER TABULATION
+              </td>
+              <td>
+                `"t"`
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        1. Set _product_ to the string-concatenation of _product_ and _abbrev_.
+      1. Else if _C_ has a numeric value less than 0x0020 (SPACE) <ins>or in the range from 0xD800 to 0xDFFF (inclusive)</ins>, then
+        1. Set _product_ to the string-concatenation of _product_ and the code unit 0x005C (REVERSE SOLIDUS).
+        1. Set _product_ to the string-concatenation of _product_ and `"u"`.
+        1. Let _hex_ be the string result of converting the numeric value of _C_ to a String of four lowercase hexadecimal digits.
+        1. Set _product_ to the string-concatenation of _product_ and _hex_.
+      1. Else,
+        1. Set _product_ to the string-concatenation of _product_ and _C_.
+    1. Set _product_ to the string-concatenation of _product_ and the code unit 0x0022 (QUOTATION MARK).
+    1. Return _product_.
+  </emu-alg>
+</emu-clause>
