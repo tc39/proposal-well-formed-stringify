@@ -17,7 +17,18 @@ contributors: Richard Gibson
   <p>The abstract operation QuoteJSONString with argument _value_ wraps a String value in QUOTATION MARK code units and escapes certain other code units within it.</p>
   <emu-alg>
     1. Let _product_ be the String value consisting solely of the code unit 0x0022 (QUOTATION MARK).
+    1. <ins>Let _surrogatePair_ be *false*.</ins>
     1. For each code unit _C_ in _value_, do
+      1. <ins>Let _surrogateEscape_ be *false*.</ins>
+      1. <ins>If _C_ has a numeric value in the inclusive range 0xD800 to 0xDBFF, then</ins>
+        1. <ins>If _C_ is followed in _value_ by a code unit with a numeric value in the inclusive range 0xDC00 to 0xDFFF, then</ins>
+          1. <ins>Set _surrogatePair_ to *true*.</ins>
+        1. <ins>Else,</ins>
+          1. <ins>Set _surrogateEscape_ to *true*.</ins>
+      1. <ins>Else if _C_ has a numeric value in the inclusive range 0xDC00 to 0xDFFF, then</ins>
+        1. <ins>If _surrogatePair_ is *false*, then</ins>
+          1. <ins>Set _surrogateEscape_ to *true*.</ins>
+        1. <ins>Set _surrogatePair_ to *false*.</ins>
       1. If _C_ is the code unit 0x0022 (QUOTATION MARK) or the code unit 0x005C (REVERSE SOLIDUS), then
         1. Set _product_ to the string-concatenation of _product_ and the code unit 0x005C (REVERSE SOLIDUS).
         1. Set _product_ to the string-concatenation of _product_ and _C_.
@@ -69,7 +80,7 @@ contributors: Richard Gibson
             </tbody>
           </table>
         1. Set _product_ to the string-concatenation of _product_ and _abbrev_.
-      1. Else if _C_ has a numeric value less than 0x0020 (SPACE) <ins>or in the range from 0xD800 to 0xDFFF (inclusive)</ins>, then
+      1. Else if <ins>_surrogateEscape_ is *true* or</ins> _C_ has a numeric value less than 0x0020 (SPACE), then
         1. Set _product_ to the string-concatenation of _product_ and the code unit 0x005C (REVERSE SOLIDUS).
         1. Set _product_ to the string-concatenation of _product_ and `"u"`.
         1. Let _hex_ be the string result of converting the numeric value of _C_ to a String of four lowercase hexadecimal digits.
