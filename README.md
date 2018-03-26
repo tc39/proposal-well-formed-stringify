@@ -6,7 +6,7 @@ A proposal to prevent `JSON.stringify` from returning ill-formed Unicode strings
 This proposal is at stage 0 of [the TC39 Process](https://tc39.github.io/process-document/).
 
 ## Champions
-None yet.
+* Mathias Bynens
 
 ## Motivation
 [RFC 8259 section 8.1](https://tools.ietf.org/html/rfc8259#section-8.1) requires JSON text exchanged outside the scope of a closed ecosystem to be encoded using UTF-8, but [`JSON.stringify`](https://tc39.github.io/ecma262/#sec-json.stringify) can return strings including code points that have no representation in UTF-8 (specifically, surrogate code points U+D800 through U+DFFF).
