@@ -5,7 +5,7 @@
 title: Well-formed JSON.stringify
 status: proposal
 stage: 0
-shortname: &lt;a href="https://gibson042.github.io/ecma262-proposal-well-formed-stringify"&gt;proposal-well-formed-stringify&lt;/a&gt;
+shortname: &lt;a href="https://github.com/gibson042/ecma262-proposal-well-formed-stringify"&gt;proposal-well-formed-stringify&lt;/a&gt;
 contributors: Richard Gibson
 </pre>
 <emu-biblio href="./missing-productions.json"></emu-biblio>
