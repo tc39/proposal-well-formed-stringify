@@ -19,7 +19,7 @@ Rather than return unpaired surrogate code points as single UTF-16 code units, r
 
 ## Discussion
 ### Backwards Compatibility
-This change is backwards-compatible, under an assumption of spec-compliant _consumers_.
+This change is backwards-compatible, under an assumption of consumer compliance with the JSON specification.
 User-visible effects will be limited to the replacement of some rare single UTF-16 code units in `JSON.stringify` output with equivalent six-character escape sequences that can be represented both in UTF-16 and in UTF-8.
 It is the authors' opinion that any consumer accepting the current ill-formed output will be unaffected by this change (this is true in particular of ECMAScript `JSON.parse`).
 Any consumer rejecting the current ill-formed output will have a new opportunity to accept its well-formed representation, although such consumers may still reject input that specifies strings including Unicode code points that are not scalar values (e.g., because they only accept [I-JSON](https://tools.ietf.org/html/rfc7493) input), but those that accept it must have mechanisms for dealing with unpaired surrogates (as mentioned in the specification of JSON).
