@@ -28,4 +28,4 @@ Any consumer rejecting the current ill-formed output will have a new opportunity
 Unicode escape sequences are valid JSON, and—being completely ASCII—are well-formed in both UTF-16 and UTF-8.
 
 ## Specification
-The specification is available in [ecmarkup](spec.emu) or [rendered HTML](https://gibson042.github.io/ecma262-proposal-well-formed-stringify/).
+The specification is available in [ecmarkup](spec.emu) or [rendered HTML](https://tc39.github.io/proposal-well-formed-stringify/).
