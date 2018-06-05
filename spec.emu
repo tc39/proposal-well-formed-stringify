@@ -15,6 +15,7 @@ contributors: Richard Gibson
 <emu-clause id="sec-quotejsonstring" aoid="QuoteJSONString">
   <h1>Runtime Semantics: QuoteJSONString ( _value_ )</h1>
   <p>The abstract operation QuoteJSONString with argument _value_ wraps a String value in QUOTATION MARK code units and escapes certain other code units within it.</p>
+  <p>As defined in the Unicode Standard, a <dfn id="high-surrogate-code-unit">high-surrogate code unit</dfn> is a code unit with a numeric value in the inclusive range 0xD800 to 0xDBFF and a <dfn id="low-surrogate-code-unit">low-surrogate code unit</dfn> is a code unit with a numeric value in the inclusive range 0xDC00 to 0xDFFF.</p>
   <emu-alg>
     1. Let _product_ be the String value consisting solely of the code unit 0x0022 (QUOTATION MARK).
     1. For each code unit _C_ in _value_, do
@@ -75,9 +76,9 @@ contributors: Richard Gibson
         1. <del>Let _hex_ be the string result of converting the numeric value of _C_ to a String of four lowercase hexadecimal digits.</del>
         1. <del>Set _product_ to the string-concatenation of _product_ and _hex_.</del>
         1. <ins>Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).</ins>
-      1. <ins>Else if _C_ has a numeric value in the inclusive range 0xD800 to 0xDBFF and is not followed by a code unit with a numeric value in the inclusive range 0xDC00 to 0xDFFF, then</ins>
+      1. <ins>Else if _C_ is a <emu-xref href="#high-surrogate-code-unit"></emu-xref> and is not followed by a <emu-xref href="#low-surrogate-code-unit"></emu-xref>, then</ins>
         1. <ins>Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).</ins>
-      1. <ins>Else if _C_ has a numeric value in the inclusive range 0xDC00 to 0xDFFF and is not preceded by a code unit with a numeric value in the inclusive range 0xD800 to 0xDBFF, then</ins>
+      1. <ins>Else if _C_ is a <emu-xref href="#low-surrogate-code-unit"></emu-xref> and is not preceded by a <emu-xref href="#high-surrogate-code-unit"></emu-xref>, then</ins>
         1. <ins>Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).</ins>
       1. Else,
         1. Set _product_ to the string-concatenation of _product_ and _C_.
