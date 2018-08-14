@@ -4,6 +4,16 @@
       "type": "production",
       "id": "prod-annexB-LegacyOctalEscapeSequence",
       "name": "LegacyOctalEscapeSequence"
+    },
+    {
+      "type": "term",
+      "term": "high-surrogate code unit",
+      "id": "high-surrogate-code-unit"
+    },
+    {
+      "type": "term",
+      "term": "low-surrogate code unit",
+      "id": "low-surrogate-code-unit"
     }
   ]
 }
