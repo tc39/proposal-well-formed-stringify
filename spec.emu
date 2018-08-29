@@ -16,17 +16,14 @@ contributors: Richard Gibson
   <p>The abstract operation QuoteJSONString with argument _value_ wraps a String value in QUOTATION MARK code units and escapes certain other code units within it.</p>
   <emu-alg>
     1. Let _product_ be the String value consisting solely of the code unit 0x0022 (QUOTATION MARK).
-    1. For each code unit _C_ in _value_, do
-      1. If the numeric value of _C_ is listed in the Code Unit Value column of <emu-xref href="#table-json-single-character-escapes"></emu-xref>, then
+    1. For each code <del>unit</del><ins>point</ins> _C_ in _value_ <ins>when interpreted as UTF-16 encoded Unicode text as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref></ins>, do
+      1. If <del>the numeric value of</del> _C_ is listed in the Code <del>Unit Value</del><ins>Point</ins> column of <emu-xref href="#table-json-single-character-escapes"></emu-xref>, then
         1. Set _product_ to the string-concatenation of _product_ and the Escape Sequence for _C_ as specified in <emu-xref href="#table-json-single-character-escapes"></emu-xref>.
-      1. Else if _C_ has a numeric value less than 0x0020 (SPACE), then
-        1. Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).
-      1. <ins>Else if _C_ is a <emu-xref href="#high-surrogate-code-unit"></emu-xref> and is not followed by a <emu-xref href="#low-surrogate-code-unit"></emu-xref>, then</ins>
-        1. <ins>Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).</ins>
-      1. <ins>Else if _C_ is a <emu-xref href="#low-surrogate-code-unit"></emu-xref> and is not preceded by a <emu-xref href="#high-surrogate-code-unit"></emu-xref>, then</ins>
-        1. <ins>Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_C_).</ins>
+      1. Else if _C_ has a numeric value less than 0x0020 (SPACE), <ins>or _C_ has the same numeric value as a <emu-xref href="#leading-surrogate-code-unit"></emu-xref> or <emu-xref href="#trailing-surrogate-code-unit"></emu-xref>,</ins> then
+        1. <ins>Let _unit_ be a code unit whose numeric value is that of _C_.</ins>
+        1. Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_unit_).
       1. Else,
-        1. Set _product_ to the string-concatenation of _product_ and _C_.
+        1. Set _product_ to the string-concatenation of _product_ and <ins>the <emu-xref aoid="UTF16Encoding"></emu-xref> of</ins> _C_.
     1. Set _product_ to the string-concatenation of _product_ and the code unit 0x0022 (QUOTATION MARK).
     1. Return _product_.
   </emu-alg>
@@ -35,7 +32,7 @@ contributors: Richard Gibson
       <tbody>
       <tr>
         <th>
-          Code Unit Value
+          Code <del>Unit Value</del><ins>Point</ins>
         </th>
         <th>
           Unicode Character Name
@@ -46,7 +43,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x0008`
+          <del>`0x0008`</del><ins>U+0008</ins>
         </td>
         <td>
           BACKSPACE
@@ -57,7 +54,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x0009`
+          <del>`0x0009`</del><ins>U+0009</ins>
         </td>
         <td>
           CHARACTER TABULATION
@@ -68,7 +65,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x000A`
+          <del>`0x000A`</del><ins>U+000A</ins>
         </td>
         <td>
           LINE FEED (LF)
@@ -79,7 +76,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x000C`
+          <del>`0x000C`</del><ins>U+000C</ins>
         </td>
         <td>
           FORM FEED (FF)
@@ -90,7 +87,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x000D`
+          <del>`0x000D`</del><ins>U+000D</ins>
         </td>
         <td>
           CARRIAGE RETURN (CR)
@@ -101,7 +98,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x0022`
+          <del>`0x0022`</del><ins>U+0022</ins>
         </td>
         <td>
           QUOTATION MARK
@@ -112,7 +109,7 @@ contributors: Richard Gibson
       </tr>
       <tr>
         <td>
-          `0x005C`
+          <del>`0x005C`</del><ins>U+005C</ins>
         </td>
         <td>
           REVERSE SOLIDUS

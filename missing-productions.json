@@ -7,13 +7,13 @@
     },
     {
       "type": "term",
-      "term": "high-surrogate code unit",
-      "id": "high-surrogate-code-unit"
+      "id": "leading-surrogate-code-unit",
+      "term": "leading-surrogate code unit"
     },
     {
       "type": "term",
-      "term": "low-surrogate code unit",
-      "id": "low-surrogate-code-unit"
+      "id": "trailing-surrogate-code-unit",
+      "term": "trailing-surrogate code unit"
     }
   ]
 }
