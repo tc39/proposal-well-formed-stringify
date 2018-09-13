@@ -19,7 +19,7 @@ contributors: Richard Gibson
     1. For each code <del>unit</del><ins>point</ins> _C_ in _value_ <ins>when interpreted as UTF-16 encoded Unicode text as described in <emu-xref href="#sec-ecmascript-language-types-string-type"></emu-xref></ins>, do
       1. If <del>the numeric value of</del> _C_ is listed in the Code <del>Unit Value</del><ins>Point</ins> column of <emu-xref href="#table-json-single-character-escapes"></emu-xref>, then
         1. Set _product_ to the string-concatenation of _product_ and the Escape Sequence for _C_ as specified in <emu-xref href="#table-json-single-character-escapes"></emu-xref>.
-      1. Else if _C_ has a numeric value less than 0x0020 (SPACE), <ins>or _C_ has the same numeric value as a <emu-xref href="#leading-surrogate-code-unit"></emu-xref> or <emu-xref href="#trailing-surrogate-code-unit"></emu-xref>,</ins> then
+      1. Else if _C_ has a numeric value less than 0x0020 (SPACE), <ins>or _C_ has the same numeric value as a <emu-xref href="#leading-surrogate"></emu-xref> or <emu-xref href="#trailing-surrogate"></emu-xref>,</ins> then
         1. <ins>Let _unit_ be a code unit whose numeric value is that of _C_.</ins>
         1. Set _product_ to the string-concatenation of _product_ and UnicodeEscape(_unit_).
       1. Else,
