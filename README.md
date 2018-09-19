@@ -17,6 +17,21 @@ However, returning such invalid Unicode strings is unnecessary, because JSON str
 ## Proposed Solution
 Rather than return unpaired surrogate code points as single UTF-16 code units, represent them with JSON escape sequences.
 
+## Illustrative examples
+```js
+// Non-BMP characters still serialize to surrogate pairs.
+JSON.stringify('𝌆')
+// → '"𝌆"'
+JSON.stringify('\uD834\uDF06')
+// → '"𝌆"'
+
+// Unpaired surrogate code units will serialize to escape sequences.
+JSON.stringify('\uDF06\uD834')
+// → '"\\udf06\\ud834"'
+JSON.stringify('\uDEAD')
+// → '"\\udead"'
+```
+
 ## Discussion
 ### Backwards Compatibility
 This change is backwards-compatible, under an assumption of consumer compliance with the JSON specification.
