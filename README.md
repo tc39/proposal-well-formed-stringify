@@ -44,3 +44,6 @@ Unicode escape sequences are valid JSON, and—being completely ASCII—are well
 
 ## Specification
 The specification is available in [ecmarkup](spec.emu) or [rendered HTML](https://tc39.github.io/proposal-well-formed-stringify/).
+
+## Implementations
+* [V8](https://bugs.chromium.org/p/v8/issues/detail?id=7782), behind the `--harmony-json-stringify` flag
