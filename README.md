@@ -3,7 +3,7 @@
 A proposal to prevent `JSON.stringify` from returning ill-formed Unicode strings.
 
 ## Status
-This proposal is at stage 2 of [the TC39 Process](https://tc39.github.io/process-document/).
+This proposal is at stage 3 of [the TC39 Process](https://tc39.github.io/process-document/).
 
 ## Champions
 * Mathias Bynens
