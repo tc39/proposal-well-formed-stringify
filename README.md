@@ -47,4 +47,4 @@ The specification is available in [ecmarkup](spec.emu) or [rendered HTML](https:
 
 ## Implementations
 * [V8](https://bugs.chromium.org/p/v8/issues/detail?id=7782), behind the `--harmony-json-stringify` flag
-* [SpderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1469021), planned to ship in Firefox 64
+* [SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1469021), planned to ship in Firefox 64
