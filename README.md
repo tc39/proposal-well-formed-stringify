@@ -47,4 +47,5 @@ The specification is available in [ecmarkup](spec.emu) or [rendered HTML](https:
 
 ## Implementations
 * [V8](https://bugs.chromium.org/p/v8/issues/detail?id=7782), enabled by default in V8 v7.2.10 and Chrome 72
-* [SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1469021), shipped in Firefox 64
+* [SpiderMonkey](https://bugzilla.mozilla.org/show_bug.cgi?id=1469021), shipping in Firefox 64
+* [JavaScriptCore](https://bugs.webkit.org/show_bug.cgi?id=191677), shipping in [Safari Technology Preview 73](https://webkit.org/blog/8555/release-notes-for-safari-technology-preview-73/)
