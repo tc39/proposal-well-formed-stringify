@@ -4,7 +4,7 @@
 <pre class="metadata">
 title: Well-formed JSON.stringify
 status: proposal
-stage: 3
+stage: 4
 shortname: &lt;a href="https://github.com/gibson042/ecma262-proposal-well-formed-stringify"&gt;proposal-well-formed-stringify&lt;/a&gt;
 contributors: Richard Gibson
 </pre>
